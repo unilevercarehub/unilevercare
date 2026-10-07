@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | Ruang Keluhan Konsumen</title>
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         LOGIN ADMIN
+         ===================================================== -->
+
+    <section id="loginPage" class="login-page">
+
+        <div class="login-decoration decoration-one"></div>
+        <div class="login-decoration decoration-two"></div>
+
+        <div class="login-card">
+
+            <a href="index.html" class="login-brand">
+
+                <span class="brand-mark">
+                    U
+                </span>
+
+                <div>
+                    <strong>
+                        Ruang Keluhan
+                    </strong>
+
+                    <small>
+                        Panel Administrator
+                    </small>
+                </div>
+
+            </a>
+
+
+            <div class="login-header">
+
+                <span class="login-eyebrow">
+                    ADMINISTRATOR
+                </span>
+
+                <h1>
+                    Selamat Datang
+                </h1>
+
+                <p>
+                    Masuk ke dashboard untuk mengelola
+                    pengaduan konsumen.
+                </p>
+
+            </div>
+
+
+            <form id="adminLoginForm">
+
+                <div class="input-group">
+
+                    <label for="adminEmail">
+                        Email Admin
+                    </label>
+
+                    <input
+                        type="email"
+                        id="adminEmail"
+                        placeholder="admin@example.com"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="adminPassword">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="adminPassword"
+                        placeholder="Masukkan password"
+                        required
+                    >
+
+                </div>
+
+
+                <div
+                    id="loginError"
+                    class="login-error"
+                ></div>
+
+
+                <button
+                    type="submit"
+                    class="login-button"
+                >
+
+                    <span>
+                        Masuk ke Dashboard
+                    </span>
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+            </form>
+
+
+            <a
+                href="index.html"
+                class="back-website"
+            >
+                ← Kembali ke website
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         DASHBOARD
+         ===================================================== -->
+
+    <section
+        id="dashboardPage"
+        class="dashboard-page"
+        style="display:none;"
+    >
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+
+                <span class="brand-mark">
+                    U
+                </span>
+
+                <div>
+
+                    <strong>
+                        Ruang Keluhan
+                    </strong>
+
+                    <small>
+                        Admin Panel
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <nav class="sidebar-menu">
+
+                <a
+                    href="#dashboard"
+                    class="menu-item active"
+                    data-section="dashboard"
+                >
+                    <span>▦</span>
+                    Dashboard
+                </a>
+
+
+                <a
+                    href="#pengaduan"
+                    class="menu-item"
+                    data-section="pengaduan"
+                >
+                    <span>▤</span>
+                    Pengaduan
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <a
+                    href="index.html"
+                    class="sidebar-link"
+                >
+                    <span>↗</span>
+                    Lihat Website
+                </a>
+
+
+                <button
+                    id="logoutButton"
+                    class="logout-button"
+                >
+                    <span>↪</span>
+                    Keluar
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN DASHBOARD -->
+
+        <main class="dashboard-main">
+
+            <!-- TOPBAR -->
+
+            <header class="dashboard-topbar">
+
+                <div>
+
+                    <span class="topbar-label">
+                        ADMINISTRATOR
+                    </span>
+
+                    <h1 id="pageTitle">
+                        Dashboard
+                    </h1>
+
+                </div>
+
+
+                <div class="admin-profile">
+
+                    <div class="admin-avatar">
+                        A
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Administrator
+                        </strong>
+
+                        <small id="adminEmailDisplay">
+                            Admin
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =================================================
+                 DASHBOARD SECTION
+                 ================================================= -->
+
+            <section
+                id="dashboardSection"
+                class="dashboard-section"
+            >
+
+                <!-- STATISTICS -->
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon blue">
+                            ≡
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Total Pengaduan
+                            </span>
+
+                            <strong id="totalComplaints">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon orange">
+                            !
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Menunggu
+                            </span>
+
+                            <strong id="waitingComplaints">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon purple">
+                            ◷
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Diproses
+                            </span>
+
+                            <strong id="processComplaints">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon green">
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Selesai
+                            </span>
+
+                            <strong id="doneComplaints">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RECENT -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="section-label">
+                                TERBARU
+                            </span>
+
+                            <h2>
+                                Pengaduan Terbaru
+                            </h2>
+
+                        </div>
+
+
+                        <button
+                            class="outline-button"
+                            onclick="showSection('pengaduan')"
+                        >
+                            Lihat Semua →
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="recentComplaints"
+                        class="complaints-table-wrapper"
+                    >
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 PENGADUAN SECTION
+                 ================================================= -->
+
+            <section
+                id="complaintSection"
+                class="dashboard-section"
+                style="display:none;"
+            >
+
+                <div class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="section-label">
+                                DATA PENGADUAN
+                            </span>
+
+                            <h2>
+                                Semua Pengaduan
+                            </h2>
+
+                        </div>
+
+
+                        <div class="table-actions">
+
+                            <select
+                                id="statusFilter"
+                                class="filter-select"
+                            >
+
+                                <option value="">
+                                    Semua Status
+                                </option>
+
+                                <option value="Menunggu">
+                                    Menunggu
+                                </option>
+
+                                <option value="Diproses">
+                                    Diproses
+                                </option>
+
+                                <option value="Ditindaklanjuti">
+                                    Ditindaklanjuti
+                                </option>
+
+                                <option value="Selesai">
+                                    Selesai
+                                </option>
+
+                                <option value="Ditolak">
+                                    Ditolak
+                                </option>
+
+                            </select>
+
+
+                            <button
+                                id="exportButton"
+                                class="outline-button"
+                            >
+                                ↓ Export
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="allComplaints"
+                        class="complaints-table-wrapper"
+                    >
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </section>
+
+
+    <!-- =====================================================
+         DETAIL MODAL
+         ===================================================== -->
+
+    <div
+        id="detailModal"
+        class="modal-overlay"
+    >
+
+        <div class="detail-modal">
+
+            <button
+                class="modal-close"
+                onclick="closeDetailModal()"
+            >
+                ×
+            </button>
+
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span class="section-label">
+                        DETAIL PENGADUAN
+                    </span>
+
+                    <h2 id="modalTicket">
+                        -
+                    </h2>
+
+                </div>
+
+                <span
+                    id="modalStatus"
+                    class="status-badge"
+                >
+                    Menunggu
+                </span>
+
+            </div>
+
+
+            <div class="modal-body">
+
+                <!-- INFO PELAPOR -->
+
+                <div class="detail-block">
+
+                    <h3>
+                        Data Pelapor
+                    </h3>
+
+
+                    <div class="detail-info-grid">
+
+                        <div>
+
+                            <label>
+                                Nama
+                            </label>
+
+                            <p id="modalNama">
+                                -
+                            </p>
+
+                        </div>
+
+
+                        <div>
+
+                            <label>
+                                Email
+                            </label>
+
+                            <p id="modalEmail">
+                                -
+                            </p>
+
+                        </div>
+
+
+                        <div>
+
+                            <label>
+                                Telepon
+                            </label>
+
+                            <p id="modalTelepon">
+                                -
+                            </p>
+
+                        </div>
+
+
+                        <div>
+
+                            <label>
+                                Kategori
+                            </label>
+
+                            <p id="modalKategori">
+                                -
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PENGADUAN -->
+
+                <div class="detail-block">
+
+                    <h3>
+                        Isi Pengaduan
+                    </h3>
+
+
+                    <div class="detail-info">
+
+                        <label>
+                            Judul
+                        </label>
+
+                        <p id="modalJudul">
+                            -
+                        </p>
+
+
+                        <label>
+                            Kronologi / Deskripsi
+                        </label>
+
+                        <p id="modalDeskripsi">
+                            -
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FOTO BUKTI -->
+
+                <div class="detail-block">
+
+                    <div class="block-title-row">
+
+                        <h3>
+                            Bukti Pendukung
+                        </h3>
+
+                    </div>
+
+
+                    <div
+                        id="evidenceContainer"
+                        class="evidence-container"
+                    >
+                    </div>
+
+                </div>
+
+
+                <!-- UPDATE -->
+
+                <div class="detail-block admin-update-block">
+
+                    <h3>
+                        Tindakan Admin
+                    </h3>
+
+
+                    <div class="update-grid">
+
+                        <div>
+
+                            <label for="updateStatus">
+                                Status
+                            </label>
+
+                            <select
+                                id="updateStatus"
+                            >
+
+                                <option value="Menunggu">
+                                    Menunggu
+                                </option>
+
+                                <option value="Diproses">
+                                    Diproses
+                                </option>
+
+                                <option value="Ditindaklanjuti">
+                                    Ditindaklanjuti
+                                </option>
+
+                                <option value="Selesai">
+                                    Selesai
+                                </option>
+
+                                <option value="Ditolak">
+                                    Ditolak
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div>
+
+                            <label for="updateNote">
+                                Catatan Admin
+                            </label>
+
+                            <textarea
+                                id="updateNote"
+                                rows="4"
+                                placeholder="Tambahkan catatan atau hasil tindak lanjut..."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        id="saveUpdateButton"
+                        class="save-button"
+                    >
+                        Simpan Perubahan
+                    </button>
+
+                </div>
+
+
+                <!-- RIWAYAT -->
+
+                <div class="detail-block">
+
+                    <h3>
+                        Riwayat Pengaduan
+                    </h3>
+
+
+                    <div
+                        id="modalHistory"
+                        class="modal-history"
+                    >
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         ADMIN JS
+         ===================================================== -->
+
+    <script src="app.js"></script>
+    <script src="admin.js"></script>
+
+</body>
+</html>

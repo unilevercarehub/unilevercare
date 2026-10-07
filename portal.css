@@ -1,0 +1,1016 @@
+/* =========================================================
+   RUANG KELUHAN KONSUMEN
+   PORTAL / COMPLAINT PAGE
+   ========================================================= */
+
+:root {
+    --portal-blue: #0756a6;
+    --portal-blue-dark: #063d78;
+    --portal-blue-light: #eaf4ff;
+
+    --portal-green: #2f9e65;
+    --portal-green-light: #eaf8f1;
+
+    --portal-text: #17324d;
+    --portal-muted: #6d7d8c;
+
+    --portal-border: #dfe7ee;
+    --portal-bg: #f5f9fc;
+    --portal-white: #ffffff;
+
+    --portal-shadow:
+        0 18px 50px rgba(18, 56, 88, 0.08);
+
+    --portal-radius: 22px;
+}
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(55, 150, 230, 0.09),
+            transparent 30%
+        ),
+        var(--portal-bg);
+
+    color: var(--portal-text);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.portal-container {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.portal-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    border-bottom: 1px solid rgba(223, 231, 238, 0.8);
+}
+
+.portal-navbar .portal-container {
+    min-height: 78px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+/* LOGO */
+
+.portal-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: var(--portal-text);
+}
+
+.portal-logo-mark {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0756a6,
+            #1687d8
+        );
+
+    color: white;
+
+    font-size: 21px;
+    font-weight: 900;
+
+    box-shadow:
+        0 9px 24px rgba(7, 86, 166, 0.22);
+}
+
+.portal-logo strong {
+    display: block;
+
+    font-size: 15px;
+    line-height: 1.1;
+}
+
+.portal-logo small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--portal-muted);
+
+    font-size: 12px;
+}
+
+
+/* BACK */
+
+.back-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    color: var(--portal-blue);
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition: 0.2s ease;
+}
+
+.back-home:hover {
+    transform: translateX(-3px);
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.portal-main {
+    padding: 65px 0 80px;
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.portal-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-bottom: 35px;
+}
+
+.eyebrow {
+    display: inline-flex;
+
+    padding: 7px 12px;
+
+    border-radius: 100px;
+
+    background: var(--portal-blue-light);
+
+    color: var(--portal-blue);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+}
+
+.portal-heading h1 {
+    margin: 14px 0 10px;
+
+    font-size: clamp(32px, 4vw, 48px);
+
+    line-height: 1.05;
+
+    letter-spacing: -1.5px;
+}
+
+.portal-heading p {
+    max-width: 680px;
+
+    margin: 0;
+
+    color: var(--portal-muted);
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+
+/* SECURITY BADGE */
+
+.secure-badge {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 12px 16px;
+
+    background: var(--portal-green-light);
+
+    border: 1px solid rgba(47, 158, 101, 0.18);
+
+    border-radius: 100px;
+
+    color: #267b51;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+
+.complaint-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        300px;
+
+    gap: 28px;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   COMPLAINT CARD
+   ========================================================= */
+
+.complaint-card {
+    background: var(--portal-white);
+
+    border:
+        1px solid
+        rgba(223, 231, 238, 0.9);
+
+    border-radius: var(--portal-radius);
+
+    box-shadow: var(--portal-shadow);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+#complaintForm {
+    padding: 38px;
+}
+
+
+/* =========================================================
+   FORM SECTION
+   ========================================================= */
+
+.form-section {
+    padding-bottom: 34px;
+
+    margin-bottom: 34px;
+
+    border-bottom:
+        1px solid
+        var(--portal-border);
+}
+
+.form-section:last-of-type {
+    margin-bottom: 0;
+}
+
+
+.form-section-title {
+    display: flex;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+.form-section-title > span {
+    flex: 0 0 auto;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: var(--portal-blue-light);
+
+    color: var(--portal-blue);
+
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.form-section-title h2 {
+    margin: 0 0 5px;
+
+    font-size: 20px;
+
+    letter-spacing: -0.3px;
+}
+
+.form-section-title p {
+    margin: 0;
+
+    color: var(--portal-muted);
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   FORM GRID
+   ========================================================= */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+.form-grid .form-group:last-child {
+    grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   FORM GROUP
+   ========================================================= */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--portal-text);
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.form-group label span {
+    color: #e24848;
+}
+
+
+/* INPUT */
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+
+    border:
+        1px solid
+        var(--portal-border);
+
+    border-radius: 13px;
+
+    background: #fbfdff;
+
+    color: var(--portal-text);
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.form-group input,
+.form-group select {
+    min-height: 50px;
+
+    padding: 0 15px;
+}
+
+.form-group textarea {
+    padding: 14px 15px;
+
+    resize: vertical;
+
+    min-height: 155px;
+
+    line-height: 1.6;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #a3afba;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--portal-blue);
+
+    background: white;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(7, 86, 166, 0.09);
+}
+
+.form-group small {
+    display: block;
+
+    margin-top: 8px;
+
+    color: #8795a2;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   UPLOAD
+   ========================================================= */
+
+.upload-box {
+    padding: 34px 25px;
+
+    text-align: center;
+
+    border:
+        2px dashed
+        #cbd9e6;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fbfdff,
+            #f6faff
+        );
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.upload-box:hover {
+    border-color: var(--portal-blue);
+
+    background: #f3f9ff;
+}
+
+.upload-icon {
+    width: 55px;
+    height: 55px;
+
+    margin: 0 auto 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background: var(--portal-blue-light);
+
+    font-size: 25px;
+}
+
+.upload-box h3 {
+    margin: 0 0 5px;
+
+    font-size: 16px;
+}
+
+.upload-box p {
+    margin: 0 0 18px;
+
+    color: var(--portal-muted);
+
+    font-size: 12px;
+}
+
+.upload-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 11px 18px;
+
+    border-radius: 10px;
+
+    background: var(--portal-blue);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    transition: 0.2s ease;
+}
+
+.upload-button:hover {
+    background: var(--portal-blue-dark);
+
+    transform: translateY(-1px);
+}
+
+.file-name {
+    margin-top: 14px;
+
+    color: var(--portal-green);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   AGREEMENT
+   ========================================================= */
+
+.agreement {
+    margin-top: 28px;
+
+    padding: 16px 18px;
+
+    border-radius: 13px;
+
+    background: #f7fafc;
+
+    border: 1px solid var(--portal-border);
+}
+
+.agreement label {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 11px;
+
+    cursor: pointer;
+}
+
+.agreement input {
+    width: 17px;
+    height: 17px;
+
+    margin-top: 2px;
+
+    accent-color: var(--portal-blue);
+
+    flex: 0 0 auto;
+}
+
+.agreement span {
+    color: #647482;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   SUBMIT
+   ========================================================= */
+
+.form-submit {
+    margin-top: 25px;
+}
+
+.btn-submit {
+    width: 100%;
+
+    min-height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    padding: 0 20px;
+
+    border: 0;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--portal-blue),
+            #1685d4
+        );
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 12px 25px
+        rgba(7, 86, 166, 0.2);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 16px 30px
+        rgba(7, 86, 166, 0.26);
+}
+
+.btn-submit:disabled {
+    cursor: wait;
+
+    opacity: 0.65;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   FORM MESSAGE
+   ========================================================= */
+
+.form-message {
+    display: none;
+
+    margin-top: 18px;
+
+    padding: 15px 17px;
+
+    border-radius: 12px;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+.form-message.success {
+    display: block;
+
+    background: #eaf8f1;
+
+    border: 1px solid #b9e5cc;
+
+    color: #23734a;
+}
+
+.form-message.error {
+    display: block;
+
+    background: #fff0f0;
+
+    border: 1px solid #f0c0c0;
+
+    color: #a53c3c;
+}
+
+
+/* =========================================================
+   SIDE INFO
+   ========================================================= */
+
+.complaint-info {
+    position: sticky;
+
+    top: 105px;
+}
+
+.info-card {
+    padding: 23px;
+
+    margin-bottom: 13px;
+
+    background: white;
+
+    border:
+        1px solid
+        var(--portal-border);
+
+    border-radius: 17px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(18, 56, 88, 0.05);
+}
+
+.info-number {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    margin-bottom: 15px;
+
+    border-radius: 9px;
+
+    background: var(--portal-green-light);
+
+    color: var(--portal-green);
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.info-card h3 {
+    margin: 0 0 7px;
+
+    font-size: 15px;
+}
+
+.info-card p {
+    margin: 0;
+
+    color: var(--portal-muted);
+
+    font-size: 12px;
+
+    line-height: 1.65;
+}
+
+
+/* STATUS LINK */
+
+.status-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 50px;
+
+    margin-top: 15px;
+
+    padding: 0 18px;
+
+    border-radius: 13px;
+
+    background: var(--portal-blue-light);
+
+    color: var(--portal-blue);
+
+    font-size: 13px;
+    font-weight: 800;
+
+    transition: 0.2s ease;
+}
+
+.status-link:hover {
+    background: #dceeff;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.portal-footer {
+    padding: 25px 0;
+
+    background: #092c4c;
+
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.portal-footer .portal-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.portal-footer p {
+    margin: 0;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+.portal-footer a {
+    color: white;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .complaint-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .complaint-info {
+        position: static;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        gap: 12px;
+    }
+
+    .info-card {
+        margin-bottom: 0;
+    }
+
+    .status-link {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .portal-container {
+        width: min(
+            100% - 28px,
+            1180px
+        );
+    }
+
+    .portal-navbar .portal-container {
+        min-height: 68px;
+    }
+
+    .portal-main {
+        padding: 40px 0 60px;
+    }
+
+    .portal-heading {
+        display: block;
+
+        margin-bottom: 25px;
+    }
+
+    .portal-heading h1 {
+        font-size: 34px;
+    }
+
+    .secure-badge {
+        display: inline-flex;
+
+        margin-top: 18px;
+    }
+
+    #complaintForm {
+        padding: 25px 20px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid .form-group:last-child {
+        grid-column: auto;
+    }
+
+    .complaint-info {
+        grid-template-columns: 1fr;
+    }
+
+    .status-link {
+        grid-column: auto;
+    }
+
+    .portal-footer .portal-container {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .back-home {
+        font-size: 0;
+    }
+
+    .back-home::after {
+        content: "← Beranda";
+
+        font-size: 13px;
+    }
+
+    .portal-logo-mark {
+        width: 39px;
+        height: 39px;
+    }
+
+    .portal-logo strong {
+        font-size: 14px;
+    }
+
+    .portal-heading h1 {
+        font-size: 30px;
+    }
+
+    .form-section-title {
+        gap: 11px;
+    }
+
+    .form-section-title > span {
+        width: 37px;
+        height: 37px;
+    }
+
+    .form-section-title h2 {
+        font-size: 18px;
+    }
+
+}

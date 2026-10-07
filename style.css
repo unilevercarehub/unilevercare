@@ -1481,6 +1481,48 @@ select {
         font-size: 20px;
     }
 
+   /* FIX LOGO - JANGAN HAPUS KODE DI ATAS */
+
+.site-header .brand-logo {
+    width: 60px !important;
+    height: 60px !important;
+    min-width: 60px !important;
+    max-width: 60px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+}
+
+.site-header .brand-logo img {
+    width: 55px !important;
+    height: 55px !important;
+    max-width: 55px !important;
+    max-height: 55px !important;
+    object-fit: contain !important;
+    display: block !important;
+}
+
+
+/* FIX LOGO BESAR HERO */
+
+.hero-main-shape .shape-letter {
+    width: 280px !important;
+    height: 250px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+}
+
+.hero-main-shape .shape-letter img {
+    width: 240px !important;
+    height: auto !important;
+    max-width: 240px !important;
+    max-height: 230px !important;
+    object-fit: contain !important;
+    display: block !important;
+}
     .unilever-card {
         top: 5px;
         right: 0;

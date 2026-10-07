@@ -1715,3 +1715,50 @@ select {
     object-fit: contain;
     display: block;
 }
+
+/* =====================================================
+   FINAL FIX - LOGO UNILEVER
+===================================================== */
+
+/* Logo di kartu kecil UNILEVER INDONESIA */
+.unilever-card .unilever-logo {
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+    max-width: 56px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    border-radius: 50% !important;
+}
+
+.unilever-card .unilever-logo img {
+    width: 50px !important;
+    height: 50px !important;
+    max-width: 50px !important;
+    max-height: 50px !important;
+    object-fit: contain !important;
+    display: block !important;
+}
+
+
+/* Logo di kartu profil perusahaan */
+.company-card .company-logo {
+    width: 64px !important;
+    height: 64px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    border-radius: 50% !important;
+}
+
+.company-card .company-logo img {
+    width: 58px !important;
+    height: 58px !important;
+    max-width: 58px !important;
+    max-height: 58px !important;
+    object-fit: contain !important;
+    display: block !important;
+}

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Buat Pengaduan | Ruang Keluhan Konsumen</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="portal.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="portal-navbar">
+
+        <div class="portal-container">
+
+            <a href="index.html" class="portal-logo">
+                <span class="portal-logo-mark">U</span>
+
+                <div>
+                    <strong>Ruang Keluhan</strong>
+                    <small>Konsumen</small>
+                </div>
+            </a>
+
+            <a href="index.html" class="back-home">
+                ← Kembali ke Beranda
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main class="portal-main">
+
+        <div class="portal-container">
+
+            <!-- HEADER -->
+            <section class="portal-heading">
+
+                <div>
+                    <span class="eyebrow">
+                        LAYANAN PENGADUAN
+                    </span>
+
+                    <h1>
+                        Sampaikan Pengaduan Anda
+                    </h1>
+
+                    <p>
+                        Isi formulir berikut dengan informasi yang lengkap
+                        agar pengaduan dapat diproses dengan baik.
+                    </p>
+                </div>
+
+                <div class="secure-badge">
+                    🔒
+                    <span>
+                        Data Anda dijaga
+                    </span>
+                </div>
+
+            </section>
+
+
+            <!-- FORM CARD -->
+            <section class="complaint-layout">
+
+                <div class="complaint-card">
+
+                    <form id="complaintForm">
+
+                        <!-- IDENTITAS -->
+                        <div class="form-section">
+
+                            <div class="form-section-title">
+                                <span>01</span>
+
+                                <div>
+                                    <h2>Data Pelapor</h2>
+                                    <p>
+                                        Masukkan informasi yang dapat
+                                        digunakan untuk menghubungi Anda.
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <div class="form-grid">
+
+                                <div class="form-group">
+
+                                    <label for="nama">
+                                        Nama Lengkap
+                                        <span>*</span>
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="nama"
+                                        name="nama"
+                                        placeholder="Contoh: Dian Rusdiana"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="email">
+                                        Email
+                                        <span>*</span>
+                                    </label>
+
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        placeholder="nama@email.com"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="telepon">
+                                        Nomor Telepon
+                                        <span>*</span>
+                                    </label>
+
+                                    <input
+                                        type="tel"
+                                        id="telepon"
+                                        name="telepon"
+                                        placeholder="08xxxxxxxxxx"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PENGADUAN -->
+                        <div class="form-section">
+
+                            <div class="form-section-title">
+
+                                <span>02</span>
+
+                                <div>
+                                    <h2>Detail Pengaduan</h2>
+
+                                    <p>
+                                        Jelaskan masalah yang ingin
+                                        Anda sampaikan.
+                                    </p>
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="kategori">
+                                    Kategori Pengaduan
+                                    <span>*</span>
+                                </label>
+
+                                <select
+                                    id="kategori"
+                                    name="kategori"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Pilih kategori
+                                    </option>
+
+                                    <option value="Produk">
+                                        Produk
+                                    </option>
+
+                                    <option value="Pelayanan">
+                                        Pelayanan
+                                    </option>
+
+                                    <option value="Distribusi">
+                                        Distribusi
+                                    </option>
+
+                                    <option value="Harga">
+                                        Harga
+                                    </option>
+
+                                    <option value="Promosi">
+                                        Promosi
+                                    </option>
+
+                                    <option value="Lingkungan">
+                                        Lingkungan
+                                    </option>
+
+                                    <option value="Lainnya">
+                                        Lainnya
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="judul">
+                                    Judul Pengaduan
+                                    <span>*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="judul"
+                                    name="judul"
+                                    placeholder="Contoh: Produk yang saya beli mengalami kerusakan"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="deskripsi">
+                                    Kronologi / Deskripsi
+                                    <span>*</span>
+                                </label>
+
+                                <textarea
+                                    id="deskripsi"
+                                    name="deskripsi"
+                                    rows="7"
+                                    placeholder="Ceritakan kronologi pengaduan Anda secara lengkap..."
+                                    required
+                                ></textarea>
+
+                                <small>
+                                    Jelaskan waktu kejadian, lokasi,
+                                    produk terkait, dan informasi lainnya
+                                    yang relevan.
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- BUKTI -->
+                        <div class="form-section">
+
+                            <div class="form-section-title">
+
+                                <span>03</span>
+
+                                <div>
+
+                                    <h2>
+                                        Bukti Pendukung
+                                    </h2>
+
+                                    <p>
+                                        Anda dapat melampirkan foto
+                                        sebagai bukti pengaduan.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="upload-box">
+
+                                <div class="upload-icon">
+                                    📎
+                                </div>
+
+                                <h3>
+                                    Upload Foto Bukti
+                                </h3>
+
+                                <p>
+                                    JPG, JPEG, PNG atau WEBP
+                                </p>
+
+                                <label
+                                    for="bukti"
+                                    class="upload-button"
+                                >
+                                    Pilih File
+                                </label>
+
+                                <input
+                                    type="file"
+                                    id="bukti"
+                                    name="bukti"
+                                    accept="image/jpeg,image/png,image/webp"
+                                    hidden
+                                >
+
+                                <div
+                                    id="fileName"
+                                    class="file-name"
+                                >
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- AGREEMENT -->
+                        <div class="agreement">
+
+                            <label>
+
+                                <input
+                                    type="checkbox"
+                                    id="agreement"
+                                    required
+                                >
+
+                                <span>
+                                    Saya memastikan bahwa informasi
+                                    yang saya berikan adalah benar dan
+                                    dapat dipertanggungjawabkan.
+                                </span>
+
+                            </label>
+
+                        </div>
+
+
+                        <!-- BUTTON -->
+                        <div class="form-submit">
+
+                            <button
+                                type="submit"
+                                class="btn-submit"
+                                id="submitComplaint"
+                            >
+
+                                <span>
+                                    Kirim Pengaduan
+                                </span>
+
+                                <span>
+                                    →
+                                </span>
+
+                            </button>
+
+                        </div>
+
+
+                        <!-- MESSAGE -->
+                        <div
+                            id="formMessage"
+                            class="form-message"
+                        >
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+                <!-- SIDE INFO -->
+                <aside class="complaint-info">
+
+                    <div class="info-card">
+
+                        <span class="info-number">
+                            01
+                        </span>
+
+                        <h3>
+                            Isi formulir
+                        </h3>
+
+                        <p>
+                            Lengkapi data diri dan informasi
+                            pengaduan Anda.
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <span class="info-number">
+                            02
+                        </span>
+
+                        <h3>
+                            Dapatkan nomor tiket
+                        </h3>
+
+                        <p>
+                            Setelah berhasil dikirim, Anda akan
+                            mendapatkan nomor tiket pengaduan.
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <span class="info-number">
+                            03
+                        </span>
+
+                        <h3>
+                            Pantau pengaduan
+                        </h3>
+
+                        <p>
+                            Gunakan nomor tiket untuk melihat
+                            perkembangan pengaduan Anda.
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        href="status.html"
+                        class="status-link"
+                    >
+                        Cek Status Pengaduan →
+                    </a>
+
+                </aside>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="portal-footer">
+
+        <div class="portal-container">
+
+            <p>
+                © 2026 Ruang Keluhan Konsumen.
+                Platform independen untuk penyampaian pengaduan konsumen.
+            </p>
+
+            <a href="index.html">
+                Beranda
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <script src="app.js"></script>
+
+</body>
+</html>

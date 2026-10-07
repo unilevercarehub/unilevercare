@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Cek Status Pengaduan | Ruang Keluhan Konsumen</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="portal.css">
+
+    <style>
+        /* =================================================
+           STATUS PAGE
+           ================================================= */
+
+        .status-page {
+            min-height: 70vh;
+        }
+
+        .status-search-card {
+            max-width: 760px;
+            margin: 0 auto 30px;
+
+            padding: 35px;
+
+            background: #ffffff;
+
+            border: 1px solid #dfe7ee;
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 18px 50px
+                rgba(18, 56, 88, 0.08);
+        }
+
+        .status-search-card h2 {
+            margin: 0 0 8px;
+
+            font-size: 23px;
+        }
+
+        .status-search-card > p {
+            margin: 0 0 25px;
+
+            color: #6d7d8c;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+        }
+
+        .status-form {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr auto;
+
+            gap: 12px;
+        }
+
+        .status-form input {
+            width: 100%;
+
+            min-height: 50px;
+
+            padding: 0 15px;
+
+            border: 1px solid #dfe7ee;
+
+            border-radius: 12px;
+
+            outline: none;
+
+            background: #fbfdff;
+
+            font-size: 14px;
+
+            color: #17324d;
+        }
+
+        .status-form input:focus {
+            border-color: #0756a6;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(7, 86, 166, 0.09);
+        }
+
+        .status-form button {
+            min-height: 50px;
+
+            padding: 0 22px;
+
+            border: 0;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0756a6,
+                    #1685d4
+                );
+
+            color: white;
+
+            font-weight: 800;
+
+            cursor: pointer;
+        }
+
+        .status-form button:hover {
+            opacity: 0.92;
+        }
+
+        /* RESULT */
+
+        .status-result {
+            display: none;
+
+            max-width: 900px;
+
+            margin: 0 auto;
+        }
+
+        .status-result.show {
+            display: block;
+        }
+
+        .status-result-card {
+            background: white;
+
+            border: 1px solid #dfe7ee;
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 18px 50px
+                rgba(18, 56, 88, 0.08);
+
+            overflow: hidden;
+        }
+
+        .status-result-header {
+            padding: 28px 32px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0756a6,
+                    #1685d4
+                );
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .status-result-header h2 {
+            margin: 0 0 6px;
+
+            font-size: 20px;
+        }
+
+        .status-result-header p {
+            margin: 0;
+
+            opacity: 0.85;
+
+            font-size: 12px;
+        }
+
+        .status-badge {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            min-width: 115px;
+
+            padding: 10px 15px;
+
+            border-radius: 100px;
+
+            background: white;
+
+            color: #0756a6;
+
+            font-size: 12px;
+
+            font-weight: 900;
+        }
+
+        .status-content {
+            padding: 32px;
+        }
+
+        .status-ticket {
+            margin-bottom: 25px;
+
+            padding: 18px;
+
+            background: #f4f9ff;
+
+            border: 1px solid #dcecff;
+
+            border-radius: 14px;
+
+            text-align: center;
+        }
+
+        .status-ticket small {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #6d7d8c;
+
+            font-size: 11px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+        .status-ticket strong {
+            color: #0756a6;
+
+            font-size: 21px;
+
+            letter-spacing: 1px;
+        }
+
+        .detail-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 18px;
+
+            margin-bottom: 30px;
+        }
+
+        .detail-item {
+            padding: 16px;
+
+            border: 1px solid #e4ebf1;
+
+            border-radius: 13px;
+
+            background: #fbfdff;
+        }
+
+        .detail-item.full {
+            grid-column: 1 / -1;
+        }
+
+        .detail-item label {
+            display: block;
+
+            margin-bottom: 6px;
+
+            color: #82919d;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.5px;
+        }
+
+        .detail-item div {
+            color: #17324d;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+        }
+
+        .admin-note {
+            padding: 18px;
+
+            margin-bottom: 30px;
+
+            border-radius: 14px;
+
+            background: #eef8f3;
+
+            border: 1px solid #cce9d9;
+        }
+
+        .admin-note h3 {
+            margin: 0 0 7px;
+
+            color: #267b51;
+
+            font-size: 14px;
+        }
+
+        .admin-note p {
+            margin: 0;
+
+            color: #426554;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+        /* TIMELINE */
+
+        .history-title {
+            margin-bottom: 18px;
+
+            font-size: 18px;
+        }
+
+        .history {
+            position: relative;
+
+            padding-left: 27px;
+        }
+
+        .history::before {
+            content: "";
+
+            position: absolute;
+
+            left: 7px;
+
+            top: 7px;
+
+            bottom: 7px;
+
+            width: 2px;
+
+            background: #dce6ee;
+        }
+
+        .history-item {
+            position: relative;
+
+            margin-bottom: 22px;
+        }
+
+        .history-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .history-dot {
+            position: absolute;
+
+            left: -27px;
+
+            top: 3px;
+
+            width: 16px;
+
+            height: 16px;
+
+            border-radius: 50%;
+
+            background: #0756a6;
+
+            border: 3px solid white;
+
+            box-shadow:
+                0 0 0 1px #0756a6;
+        }
+
+        .history-item strong {
+            display: block;
+
+            margin-bottom: 3px;
+
+            color: #17324d;
+
+            font-size: 13px;
+        }
+
+        .history-date {
+            color: #8997a3;
+
+            font-size: 11px;
+        }
+
+        .history-note {
+            margin-top: 7px;
+
+            color: #667886;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+        .status-error {
+            display: none;
+
+            max-width: 760px;
+
+            margin: 0 auto 25px;
+
+            padding: 17px 18px;
+
+            border-radius: 13px;
+
+            background: #fff1f1;
+
+            border: 1px solid #f0c5c5;
+
+            color: #a53d3d;
+
+            font-size: 13px;
+        }
+
+        .status-error.show {
+            display: block;
+        }
+
+        @media (max-width: 760px) {
+
+            .status-search-card {
+                padding: 25px 20px;
+            }
+
+            .status-form {
+                grid-template-columns: 1fr;
+            }
+
+            .status-result-header {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+            .status-content {
+                padding: 22px 18px;
+            }
+
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-item.full {
+                grid-column: auto;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="portal-navbar">
+
+        <div class="portal-container">
+
+            <a
+                href="index.html"
+                class="portal-logo"
+            >
+
+                <span class="portal-logo-mark">
+                    U
+                </span>
+
+                <div>
+                    <strong>
+                        Ruang Keluhan
+                    </strong>
+
+                    <small>
+                        Konsumen
+                    </small>
+                </div>
+
+            </a>
+
+
+            <a
+                href="index.html"
+                class="back-home"
+            >
+                ← Kembali ke Beranda
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main class="portal-main status-page">
+
+        <div class="portal-container">
+
+            <!-- HEADING -->
+            <section class="portal-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        STATUS PENGADUAN
+                    </span>
+
+                    <h1>
+                        Cek Pengaduan Anda
+                    </h1>
+
+                    <p>
+                        Masukkan nomor tiket dan email yang
+                        digunakan saat membuat pengaduan.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- SEARCH -->
+            <section class="status-search-card">
+
+                <h2>
+                    Cari Pengaduan
+                </h2>
+
+                <p>
+                    Gunakan nomor tiket yang Anda terima
+                    setelah pengaduan berhasil dikirim.
+                </p>
+
+
+                <form
+                    id="statusForm"
+                    class="status-form"
+                >
+
+                    <input
+                        type="text"
+                        id="ticketSearch"
+                        placeholder="Contoh: UKC-20261008-0001"
+                        required
+                    >
+
+                    <input
+                        type="email"
+                        id="emailSearch"
+                        placeholder="Email Anda"
+                        required
+                    >
+
+                    <button type="submit">
+                        Cek Status
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- ERROR -->
+            <div
+                id="statusError"
+                class="status-error"
+            >
+            </div>
+
+
+            <!-- RESULT -->
+            <section
+                id="statusResult"
+                class="status-result"
+            >
+
+                <div class="status-result-card">
+
+                    <!-- HEADER -->
+
+                    <div class="status-result-header">
+
+                        <div>
+
+                            <h2>
+                                Pengaduan Ditemukan
+                            </h2>
+
+                            <p>
+                                Informasi terbaru mengenai
+                                pengaduan Anda.
+                            </p>
+
+                        </div>
+
+
+                        <div
+                            id="statusBadge"
+                            class="status-badge"
+                        >
+                            Menunggu
+                        </div>
+
+                    </div>
+
+
+                    <!-- CONTENT -->
+
+                    <div class="status-content">
+
+                        <!-- TICKET -->
+
+                        <div class="status-ticket">
+
+                            <small>
+                                Nomor Tiket
+                            </small>
+
+                            <strong
+                                id="resultTicket"
+                            >
+                                -
+                            </strong>
+
+                        </div>
+
+
+                        <!-- DETAIL -->
+
+                        <div class="detail-grid">
+
+                            <div class="detail-item">
+
+                                <label>
+                                    Nama Pelapor
+                                </label>
+
+                                <div
+                                    id="resultNama"
+                                >
+                                    -
+                                </div>
+
+                            </div>
+
+
+                            <div class="detail-item">
+
+                                <label>
+                                    Kategori
+                                </label>
+
+                                <div
+                                    id="resultKategori"
+                                >
+                                    -
+                                </div>
+
+                            </div>
+
+
+                            <div class="detail-item full">
+
+                                <label>
+                                    Judul Pengaduan
+                                </label>
+
+                                <div
+                                    id="resultJudul"
+                                >
+                                    -
+                                </div>
+
+                            </div>
+
+
+                            <div class="detail-item full">
+
+                                <label>
+                                    Kronologi / Deskripsi
+                                </label>
+
+                                <div
+                                    id="resultDeskripsi"
+                                >
+                                    -
+                                </div>
+
+                            </div>
+
+
+                            <div class="detail-item">
+
+                                <label>
+                                    Tanggal Pengaduan
+                                </label>
+
+                                <div
+                                    id="resultCreated"
+                                >
+                                    -
+                                </div>
+
+                            </div>
+
+
+                            <div class="detail-item">
+
+                                <label>
+                                    Pembaruan Terakhir
+                                </label>
+
+                                <div
+                                    id="resultUpdated"
+                                >
+                                    -
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ADMIN NOTE -->
+
+                        <div
+                            id="adminNote"
+                            class="admin-note"
+                            style="display:none;"
+                        >
+
+                            <h3>
+                                Catatan Admin
+                            </h3>
+
+                            <p
+                                id="resultNote"
+                            >
+                            </p>
+
+                        </div>
+
+
+                        <!-- HISTORY -->
+
+                        <h3 class="history-title">
+                            Riwayat Pengaduan
+                        </h3>
+
+
+                        <div
+                            id="historyList"
+                            class="history"
+                        >
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="portal-footer">
+
+        <div class="portal-container">
+
+            <p>
+                © 2026 Ruang Keluhan Konsumen.
+                Platform independen untuk penyampaian pengaduan konsumen.
+            </p>
+
+            <a href="index.html">
+                Beranda
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- APP JS -->
+
+    <script src="app.js"></script>
+
+
+    <!-- STATUS JS -->
+
+    <script>
+
+        /* =================================================
+           STATUS PAGE SCRIPT
+           ================================================= */
+
+
+        const statusForm =
+            document.getElementById(
+                "statusForm"
+            );
+
+
+        const statusError =
+            document.getElementById(
+                "statusError"
+            );
+
+
+        const statusResult =
+            document.getElementById(
+                "statusResult"
+            );
+
+
+        /* -------------------------------------------------
+           AUTO READ TICKET FROM URL
+           ------------------------------------------------- */
+
+        const urlParams =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const urlTicket =
+            urlParams.get(
+                "ticket"
+            );
+
+
+        if (urlTicket) {
+
+            document.getElementById(
+                "ticketSearch"
+            ).value =
+                urlTicket;
+        }
+
+
+        /* -------------------------------------------------
+           FORM
+           ------------------------------------------------- */
+
+        statusForm.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+
+                const ticket =
+                    document.getElementById(
+                        "ticketSearch"
+                    )
+                    .value
+                    .trim();
+
+
+                const email =
+                    document.getElementById(
+                        "emailSearch"
+                    )
+                    .value
+                    .trim();
+
+
+                hideError();
+
+
+                const complaint =
+                    findComplaintByTicketAndEmail(
+                        ticket,
+                        email
+                    );
+
+
+                if (!complaint) {
+
+                    showError(
+                        "Pengaduan tidak ditemukan. Pastikan nomor tiket dan email yang Anda masukkan sudah benar."
+                    );
+
+                    statusResult.classList.remove(
+                        "show"
+                    );
+
+                    return;
+                }
+
+
+                showComplaint(
+                    complaint
+                );
+
+            }
+        );
+
+
+        /* -------------------------------------------------
+           SHOW ERROR
+           ------------------------------------------------- */
+
+        function showError(
+            message
+        ) {
+
+            statusError.textContent =
+                message;
+
+            statusError.classList.add(
+                "show"
+            );
+        }
+
+
+        function hideError() {
+
+            statusError.textContent =
+                "";
+
+            statusError.classList.remove(
+                "show"
+            );
+        }
+
+
+        /* -------------------------------------------------
+           SHOW COMPLAINT
+           ------------------------------------------------- */
+
+        function showComplaint(
+            complaint
+        ) {
+
+            document.getElementById(
+                "resultTicket"
+            ).textContent =
+                complaint.ticketNumber;
+
+
+            document.getElementById(
+                "resultNama"
+            ).textContent =
+                complaint.nama;
+
+
+            document.getElementById(
+                "resultKategori"
+            ).textContent =
+                complaint.kategori;
+
+
+            document.getElementById(
+                "resultJudul"
+            ).textContent =
+                complaint.judul;
+
+
+            document.getElementById(
+                "resultDeskripsi"
+            ).textContent =
+                complaint.deskripsi;
+
+
+            document.getElementById(
+                "resultCreated"
+            ).textContent =
+                formatDate(
+                    complaint.createdAt
+                );
+
+
+            document.getElementById(
+                "resultUpdated"
+            ).textContent =
+                formatDate(
+                    complaint.updatedAt
+                );
+
+
+            /* STATUS */
+
+            const badge =
+                document.getElementById(
+                    "statusBadge"
+                );
+
+
+            badge.textContent =
+                complaint.status;
+
+
+            /* NOTE */
+
+            const noteBox =
+                document.getElementById(
+                    "adminNote"
+                );
+
+
+            const note =
+                document.getElementById(
+                    "resultNote"
+                );
+
+
+            if (
+                complaint.catatanAdmin
+                &&
+                complaint.catatanAdmin.trim()
+            ) {
+
+                note.textContent =
+                    complaint.catatanAdmin;
+
+                noteBox.style.display =
+                    "block";
+
+            } else {
+
+                note.textContent =
+                    "";
+
+                noteBox.style.display =
+                    "none";
+            }
+
+
+            /* HISTORY */
+
+            const historyList =
+                document.getElementById(
+                    "historyList"
+                );
+
+
+            historyList.innerHTML =
+                "";
+
+
+            const history =
+                Array.isArray(
+                    complaint.history
+                )
+                    ? complaint.history
+                    : [];
+
+
+            history.forEach(
+                function (item) {
+
+                    const div =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    div.className =
+                        "history-item";
+
+
+                    div.innerHTML =
+                        `
+                        <span class="history-dot"></span>
+
+                        <strong>
+                            ${escapeHTML(item.status)}
+                        </strong>
+
+                        <div class="history-date">
+                            ${formatDate(item.tanggal)}
+                        </div>
+
+                        ${
+                            item.catatan
+                            ? `
+                            <div class="history-note">
+                                ${escapeHTML(item.catatan)}
+                            </div>
+                            `
+                            : ""
+                        }
+                        `;
+
+
+                    historyList.appendChild(
+                        div
+                    );
+
+                }
+            );
+
+
+            statusResult.classList.add(
+                "show"
+            );
+
+
+            setTimeout(
+                function () {
+
+                    statusResult.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                },
+                100
+            );
+
+        }
+
+    </script>
+
+</body>
+</html>
